@@ -1,4 +1,6 @@
 var tokenAcesso = ''
+var artista = ''
+
 
 function getToken(clientId, clientSecret) {
 
@@ -24,11 +26,15 @@ function getToken(clientId, clientSecret) {
             containerToken.style.display = 'none';
         } else {
             console.log("erro: " ,xhr.statusText);
+            let erro = document.getElementById('erro')
+            erro.textContent = "Erro na validação para token"
         }
     };
 
     xhr.onerror = function() {
         console.log(xhr.statusText);
+        let erro = document.getElementById('erro')
+        erro.textContent = "Erro inesperado"
     };
 
     xhr.send(data);
@@ -46,16 +52,32 @@ function getArtista(id){
             let impArtista = {
                 "nome": artista.name,
                 "generos": artista.genres,
-                "numeroSeguidores": artista.followers
+                "numeroSeguidores": artista.followers.total
             }
+            artista = impArtista
             console.log(impArtista)
+            let paragrafoArtista = document.getElementById('dadosArtista')
+            paragrafoArtista.textContent = ''
+            let nome = document.createElement('p')
+            nome.textContent = impArtista.nome
+            let generos = document.createElement('p')
+            generos.textContent = impArtista.generos
+            let numeroSeguidores = document.createElement('p')
+            numeroSeguidores.textContent = impArtista.numeroSeguidores
+            paragrafoArtista.appendChild(nome)
+            paragrafoArtista.appendChild(generos)
+            paragrafoArtista.appendChild(numeroSeguidores)
         } else {
             console.log("erro: ", xhr.statusText)
+            let erro = document.getElementById('dadosArtista')
+            erro.textContent = "erro ao procurar Artista, tente um ID válido"
         }
     }
 
     xhr.onerror = function() {
         console.log(xhr.statusText)
+        let erro = document.getElementById('dadosArtista')
+        erro.textContent = "erro na validação do Token"
     }
 
     xhr.send()
@@ -75,6 +97,5 @@ document.addEventListener("DOMContentLoaded", function(){
     botaoArtista.addEventListener('click', function(){
         getArtista(caixaArtistaId.value)
     })
-
 
 })

@@ -21,13 +21,31 @@ function getToken(clientId, clientSecret) {
             if (tokenAcesso !== '') {
                 const containerAPI = document.getElementById("API");
                 containerAPI.style.display = 'block';
+                const divExemplos = document.getElementById("Exemplos IDs")
+                let megadeth = document.createElement('p')
+                megadeth.textContent = 'Megadeth - 1Yox196W7bzVNZI7RBaPnf?si=S1o6LKbDQk2n2CRWgWBqxg'
+                divExemplos.appendChild(megadeth)
+                let metallica = document.createElement('p')
+                metallica.textContent = 'Metallica - 2ye2Wgw4gimLv2eAKyk1NB?si=A29gfm4NTpq1knEX2ltDyA'
+                divExemplos.appendChild(metallica)
+                let sepultura = document.createElement('p')
+                sepultura.textContent = 'Sepultura - 6JW8wliOEwaDZ231ZY7cf4?si=tMew0JLBSQOo-dNx_C3plw'
+                divExemplos.appendChild(sepultura)
             }
             const containerToken = document.getElementById("token");
             containerToken.style.display = 'none';
         } else {
             console.log("erro: " ,xhr.statusText);
             let erro = document.getElementById('erro')
-            erro.textContent = "Erro na validação para token"
+            if (clientId === '' && clientSecret === ''){
+                erro.textContent = "Caixas vazias"
+            } else if(clientId === '' && clientSecret != ''){
+                erro.textContent = "Caixa clientID vazia"
+            } else if(clientId != '' && clientSecret === ''){
+                erro.textContent = "Caixa clientSecret vazia"
+            } else {
+                erro.textContent = "Erro na validação para token"
+            }
         }
     };
 
@@ -54,6 +72,7 @@ function getArtista(id){
                 "generos": artista.genres,
                 "numeroSeguidores": artista.followers.total
             }
+
             artista = impArtista
             console.log(impArtista)
             let paragrafoArtista = document.getElementById('dadosArtista')
@@ -67,10 +86,22 @@ function getArtista(id){
             paragrafoArtista.appendChild(nome)
             paragrafoArtista.appendChild(generos)
             paragrafoArtista.appendChild(numeroSeguidores)
+            let quebra = document.createElement('br')
+            paragrafoArtista.appendChild(quebra)
+            paragrafoArtista.appendChild(quebra)
+            let caixaArtistaId = document.getElementById('artistaId')
+            caixaArtistaId.value = ''
         } else {
             console.log("erro: ", xhr.statusText)
-            let erro = document.getElementById('dadosArtista')
-            erro.textContent = "erro ao procurar Artista, tente um ID válido"
+            let caixaArtistaId = document.getElementById('artistaId')
+            if(caixaArtistaId.value === ''){
+                let erro = document.getElementById('dadosArtista')
+                erro.textContent = "caixa vazia!"
+            } else {
+                let erro = document.getElementById('dadosArtista')
+                erro.textContent = "erro ao procurar Artista, tente um ID válido"
+            }
+            caixaArtistaId.value = ''
         }
     }
 

@@ -16,6 +16,10 @@ function getToken(clientId, clientSecret) {
             var token = response.access_token;
             tokenAcesso = token;
             console.log(xhr.statusText);
+            const containerAPI = document.getElementById("API");
+            const containerToken = document.getElementById("token");
+            containerAPI.style.display = 'block';
+            containerToken.style.display = 'none';
         } else {
             console.log("erro: " ,xhr.statusText);
         }

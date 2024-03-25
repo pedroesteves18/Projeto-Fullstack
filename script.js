@@ -120,7 +120,11 @@ document.addEventListener("DOMContentLoaded", function(){
     var caixaArtistaId = document.getElementById("artistaId")
     var botaoToken = document.getElementById("botaoToken")
     var botaoArtista = document.getElementById("botaoArtista")
+    var botaoTokenGenerico = document.getElementById("botaoTokenGenerico")
 
+    botaoTokenGenerico.addEventListener('click', function(){
+        getToken("f2d3074ab739445e90c59c9ad847026f","eee918daaef54a188eeee3a31101df3f")
+    })
     botaoToken.addEventListener('click', function(){
         getToken(caixaClientId.value,caixaClientSecret.value)
     })

@@ -48,3 +48,10 @@ body {
     height: 40px;
     font-size: large;
 }
+
+.resultado{
+    gap: 10px;
+    font-size: large;
+    color: white;
+    text-align:  center;
+}

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     botaoEntrada.addEventListener('click', function(){
         getCidade(caixaEntrada.value)
+        caixaEntrada.value = ''
     })
 })
 
@@ -21,11 +22,15 @@ function getCidade(local){
     if (local === '') {
         let erro = document.getElementById('erro')
         erro.textContent = "caixa vazia!"
+        const resultado = document.getElementById('resultado')
+        resultado.textContent = ''
         return
     }
     xhr.onload = function(){
         if(xhr.status === 200){
             let cidade = JSON.parse(xhr.responseText)
+            const resultado = document.getElementById('resultado')
+            resultado.textContent = ''
             if(cidade.data.length === 0){
                 let erro = document.getElementById('erro')
                 erro.textContent = "local nao encontrado!"
@@ -33,8 +38,6 @@ function getCidade(local){
             }
             let erro = document.getElementById('erro')
             erro.textContent = ''
-            const resultado = document.getElementById('resultado')
-            resultado.textContent = ''
             for (let item in cidade.data){
                 cidades.push(`Local: ${cidade.data[item].name}, População: ${cidade.data[item].population}, Região/Estado: ${cidade.data[item].region}, Latitude/Longitude: ${cidade.data[item].latitude}/${cidade.data[item].longitude}`)
             }

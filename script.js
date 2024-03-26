@@ -23,13 +23,13 @@ function getToken(clientId, clientSecret) {
                 containerAPI.style.display = 'block';
                 const divExemplos = document.getElementById("Exemplos IDs")
                 let megadeth = document.createElement('p')
-                megadeth.textContent = 'Megadeth - 1Yox196W7bzVNZI7RBaPnf?si=S1o6LKbDQk2n2CRWgWBqxg'
+                megadeth.textContent = 'Megadeth - 1Yox196W7bzVNZI7RBaPnf'
                 divExemplos.appendChild(megadeth)
                 let metallica = document.createElement('p')
-                metallica.textContent = 'Metallica - 2ye2Wgw4gimLv2eAKyk1NB?si=A29gfm4NTpq1knEX2ltDyA'
+                metallica.textContent = 'Metallica - 2ye2Wgw4gimLv2eAKyk1NB'
                 divExemplos.appendChild(metallica)
                 let sepultura = document.createElement('p')
-                sepultura.textContent = 'Sepultura - 6JW8wliOEwaDZ231ZY7cf4?si=tMew0JLBSQOo-dNx_C3plw'
+                sepultura.textContent = 'Sepultura - 6JW8wliOEwaDZ231ZY7cf4'
                 divExemplos.appendChild(sepultura)
             }
             const containerToken = document.getElementById("token");
